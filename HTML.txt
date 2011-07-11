@@ -1,0 +1,45 @@
+XHTML Transitional vs Strict
+
+Strict DTD — строгая, однозначная схема валидации документа, которая как раз создана для того чтобы отделить содержимое от стилей и скриптов.
+Как это сделать? Очень просто. В следующем вашем проекте просто поменяйте DOCTYPE на один из этих:
+<!DOCTYPE html PUBLIC «-//W3C//DTD HTML 4.01//EN» «http://www.w3.org/TR/html4/strict.dtd»>
+<!DOCTYPE html PUBLIC «-//W3C//DTD XHTML 1.0 Strict//EN» «http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd»>
+
+Кстати, W3C однозначно рекомендует использовать Strict.
+«This is the HTML 4.01 Transitional DTD, which includes presentation attributes and elements that W3C expects to phase out as support for style sheets matures. Authors should use the Strict DTD when possible, but may use the Transitional DTD when support for presentation attribute and elements is required.»
+
+Чего вы лишаетесь, переходя на строгую схему валидации:
+
+Список запрещеных элементов: applet, basefont, center, dir, font, iframe, isindex, menu, noframes, s, strike, u
+
+Список запрещеных атрибутов:
+——Атрибут alink запрещен для body
+——Атрибут background запрещен для body
+——Атрибут bgcolor запрещен для body, table, td, th, tr
+——Атрибут border запрещен для img, object, но может быть использован в table
+——Атрибут clear запрещен для br
+——Атрибут language запрещен для script
+——Атрибут link запрещен для body
+——Атрибут name запрещен для form, img, но может быть использован в a, button, input, map, meta, object, param, select, textarea
+——Атрибут noshade запрещен для hr
+——Атрибут nowrap запрещен для td, th
+——Атрибут start запрещен для ol
+——Атрибут target запрещен для a, area, base, form, link
+——Атрибут text запрещен для body
+——Атрибут type запрещен для li, ol, ul, но может быть использован в a, button, input, link, object, param, script, style
+——Атрибут value запрещен для li, но может быть использован в button, input, option, param
+——Атрибут vlink запрещен для body
+
+Структурные изменения: элементы a, abbr, acronym, b, bdo, big, br, button, cite, code, dfn, em, i, img, input, kbd, label, map, object, q, samp, select, small, span, strong, sub, sup, textarea, tt, var и текст не могут быть дочерними для blockquote, body, form, noscript. Другими словами — элементы blockquote, body, form, noscript могут иметь только блочные элементы в дочерних элементах первого уровня.
+Отказ от атрибута target=»_blank» для ссылок. Во-первых, указывать пользователю на то, как и где открывать ссылку — не красиво. Во-вторых, если необходимо, это можно сделать простым способом и продвинутым.
+
+Что вы приобретаете?
+——Хорошо структурированую разметку
+——Четкое отделение содержимого от оформления
+——Возможность более быстрой и легкой работы и поддержки кода
+——Дисциплину в написании кода
+
+Когда стоит использвать Transitional? Тут есть два основных момента. Переходная схема хороша, когда вы работаете с большим количеством чужого кода, поменять который не представляется возможным. Хороший пример — большинство CMS.
+В большинстве случаев невозможно изменить их код, не залезая в ядро, что автоматически исключает возможность обновлений.
+Второй момент — использование iframe. Если вы используете в своих проектах iframe, то он не оставляет вам выбора. Используте Transitional.
+Дабы облегчить себе переход от переходной схемы к строгой во время разметки документа думайте о том, для чего нужен тот или иной элемент, а не о том как он будет выглядеть.
